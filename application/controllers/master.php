@@ -12,19 +12,19 @@ class Master extends CI_Controller {
 		$this->load->view('pelanggan');
 	}
 
-	public function dt(){
-		$this->load->library('Datatable', array('model' => 'Pelanggan_dt', 'rowIdCol' => 'id'));
+	public function pelanggan_dt(){
+        $this->load->library('Datatable', array('model' => 'Pelanggan_dt', 'rowIdCol' => 'id'));
 
-		$jsonArray = $this->datatable->datatableJson(array(
-			//'a.delivery_date' => 'date',
-			//'a.unit_price' => 'currency'
-		));
+        $jsonArray = $this->datatable->datatableJson(array(
+            //'a.delivery_date' => 'date',
+            //'a.unit_price' => 'currency'
+        ));
 
-		$this->output->set_header("Pragma: no-cache");
-		$this->output->set_header("Cache-Control: no-store, no-cache");
-		$this->output->set_content_type('application/json')->set_output(json_encode($jsonArray));
+        $this->output->set_header("Pragma: no-cache");
+        $this->output->set_header("Cache-Control: no-store, no-cache");
+        $this->output->set_content_type('application/json')->set_output(json_encode($jsonArray));
         // exit();
-	}
+    }
 
     function insert_dumy(){
         // jumlah data yang akan di insert
