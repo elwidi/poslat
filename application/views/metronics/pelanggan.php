@@ -155,16 +155,6 @@
     var table;
  
     $(document).ready(function() {
-        var message = '<?php echo $this->session->flashdata('message')?>';
-        if(message != '') {
-            /*new PNotify({
-                title: 'Success',
-                text: message,
-                icon: 'icon-checkmark3',
-                addclass: 'bg-success',
-                delay: '3000'
-            });*/
-        }
         $('#new_add').click(function(){
             $('#add_new').modal('show');
         });
