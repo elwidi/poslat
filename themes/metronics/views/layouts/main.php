@@ -18,12 +18,18 @@
 
         <link href="<?php echo base_url();?>/themes/metronics/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url();?>/themes/metronics/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
+
+        <link href="<?php echo base_url();?>/themes/metronics/assets/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url();?>/themes/metronics/assets/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url();?>/themes/metronics/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url();?>/themes/metronics/assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url();?>/themes/metronics/assets/global/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css" rel="stylesheet" type="text/css" />
         <!-- END GLOBAL MANDATORY STYLES -->
         <!-- BEGIN PAGE LEVEL PLUGINS -->
         <link href="<?php echo base_url();?>/themes/metronics/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url();?>/themes/metronics/assets/global/plugins/morris/morris.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url();?>/themes/metronics/assets/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css" />
-        <link href="<?php echo base_url();?>/themes/metronics/assets/global/plugins/jqvmap/jqvmap/jqvmap.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url();?>/themes/metronics/assets/global/plugins/bootstrap-toastr/toastr.min.css" rel="stylesheet" type="text/css" />
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL STYLES -->
         <link href="<?php echo base_url();?>/themes/metronics/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
@@ -41,9 +47,17 @@
         <script src="<?php echo base_url();?>/themes/metronics/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url();?>/themes/metronics/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url();?>/themes/metronics/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
-        <script src="<?php echo base_url();?>/themes/metronics/assets/global/scripts/datatable.js" type="text/javascript"></script>
         <script src="<?php echo base_url();?>/themes/metronics/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url();?>/themes/metronics/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
+        <script src="<?php echo base_url();?>/themes/metronics/assets/global/plugins/moment.min.js" type="text/javascript"></script>
+        <script src="<?php echo base_url();?>/themes/metronics/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+        <script src="<?php echo base_url();?>/themes/metronics/assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
+        <script src="<?php echo base_url();?>/themes/metronics/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+        <script src="<?php echo base_url();?>/themes/metronics/assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
+        <script src="<?php echo base_url();?>/themes/metronics/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+        <script src="<?php echo base_url();?>/themes/metronics/assets/global/plugins/bootstrap-toastr/toastr.min.js" type="text/javascript"></script>
+        <script src="<?php echo base_url();?>/themes/metronics/assets/elwidi/parsley.min.js" type="text/javascript"></script>
+
         <!-- END CORE PLUGINS -->
         <link rel="shortcut icon" href="favicon.ico" /> </head>
     <!-- END HEAD -->
@@ -654,8 +668,7 @@
 <![endif]-->
         
         <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <script src="<?php echo base_url();?>/themes/metronics/assets/global/plugins/moment.min.js" type="text/javascript"></script>
-        <script src="<?php echo base_url();?>/themes/metronics/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.js" type="text/javascript"></script>
+       
         <script src="<?php echo base_url();?>/themes/metronics/assets/global/plugins/morris/morris.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url();?>/themes/metronics/assets/global/plugins/morris/raphael-min.js" type="text/javascript"></script>
         <script src="<?php echo base_url();?>/themes/metronics/assets/global/plugins/counterup/jquery.waypoints.min.js" type="text/javascript"></script>

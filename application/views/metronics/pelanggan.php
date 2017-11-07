@@ -13,10 +13,10 @@
     <div class="row">
         <div class="col-md-12">
             <!-- BEGIN EXAMPLE TABLE PORTLET-->
-            <div class="portlet light bordered">
+            <div class="portlet light">
                 <div class="portlet-title">
                     <div class="caption font-dark">
-                        <i class="icon-settings font-dark"></i>
+                        <i class="fa fa-users font-dark"></i>
                         <span class="caption-subject bold uppercase"> Data Pelanggan</span>
                     </div>
                     <!-- <div class="actions">
@@ -85,66 +85,45 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                <h4 class="modal-title">Modal Title</h4>
+                <h4 class="modal-title">Data Pelanggan Baru</h4>
             </div>
             <div class="modal-body"> 
                 <div class="portlet">
                     <div class="portlet-body form">
                         <!-- BEGIN FORM-->
-                        <form action="#" class="form-horizontal">
+                        <form method="post" class="form-horizontal" id = "pelanggan_baru">
                             <div class="form-body">
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label">Text</label>
-                                    <div class="col-md-9">
-                                        <input type="text" class="form-control input-circle" placeholder="Enter text">
+                                    <label class="col-md-4 control-label">Nama <span class="required"> * </span></label>
+                                    <div class="col-md-8">
+                                        <input type="text" name = "name" class="form-control" data-parsley-required = "true" data-parsley-error-message="Silahkan masukan nama">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label">Email Address</label>
-                                    <div class="col-md-9">
-                                        <div class="input-group">
-                                            <span class="input-group-addon input-circle-left">
-                                                <i class="fa fa-envelope"></i>
-                                            </span>
-                                            <input type="email" class="form-control input-circle-right" placeholder="Email Address"> </div>
+                                    <label class="col-md-4 control-label">Nomor Handphone<span class="required"> * </span></label>
+                                    <div class="col-md-8">
+                                        <input type="text" name = "contact1" class="form-control" data-parsley-required = "true" data-parsley-error-message="Silahkan masukan nomor hp">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label">Password</label>
-                                    <div class="col-md-9">
-                                        <div class="input-group">
-                                            <input type="password" class="form-control input-circle-left" placeholder="Password">
-                                            <span class="input-group-addon input-circle-right">
-                                                <i class="fa fa-user"></i>
-                                            </span>
-                                        </div>
+                                    <label class="col-md-4 control-label">Email</label>
+                                    <div class="col-md-8">
+                                        <input type="email" name = "contact2" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label">Left Icon</label>
-                                    <div class="col-md-9">
+                                    <label class="col-md-4 control-label">Alamat</label>
+                                    <div class="col-md-8">
+                                        <textarea rows="3" cols="5" name="address" class="form-control" placeholder="Enter your address here"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Tanggal Lahir</label>
+                                    <div class="col-md-8">
                                         <div class="input-icon">
-                                            <i class="fa fa-bell-o"></i>
-                                            <input type="text" class="form-control input-circle" placeholder="Left icon"> </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label">Right Icon</label>
-                                    <div class="col-md-9">
-                                        <div class="input-icon right">
-                                            <i class="fa fa-microphone"></i>
-                                            <input type="text" class="form-control input-circle" placeholder="Right icon"> </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label">Input With Spinner</label>
-                                    <div class="col-md-9">
-                                        <input type="password" class="form-control spinner input-circle" placeholder="Password"> </div>
-                                </div>
-                                <div class="form-group last">
-                                    <label class="col-md-3 control-label">Static Control</label>
-                                    <div class="col-md-9">
-                                        <span class="form-control-static"> email@example.com </span>
+                                            <i class="fa fa-calendar"></i>
+                                            <input name = "dob" class="form-control form-control-inline input-medium date-picker" data-date-format="dd M yyyy" size="16" type="text" value="" />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -156,15 +135,16 @@
                                     </div>
                                 </div>
                             </div> -->
-                        </form>
-                        <!-- END FORM-->
+                        
                     </div>
                 </div> 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
-                <button type="button" class="btn green">Save changes</button>
+                <button type="submit" name = "submit_btn" value = "true" class="btn green" id =  "btn_submit">Save</button>
             </div>
+            </form>
+            <!-- END FORM-->
         </div>
         <!-- /.modal-content -->
     </div>
@@ -175,9 +155,25 @@
     var table;
  
     $(document).ready(function() {
+        var message = '<?php echo $this->session->flashdata('message')?>';
+        if(message != '') {
+            /*new PNotify({
+                title: 'Success',
+                text: message,
+                icon: 'icon-checkmark3',
+                addclass: 'bg-success',
+                delay: '3000'
+            });*/
+        }
         $('#new_add').click(function(){
             $('#add_new').modal('show');
         });
+        $('.date-picker').datepicker({
+            rtl: App.isRTL(),
+            orientation: "left",
+            autoclose: true
+        });
+        $('#pelanggan_baru').parsley();
         //datatables
         $('#sample_1').dataTable({
             processing: true,
@@ -217,10 +213,10 @@
                 },
                 {
                     render: function (data, type, row) {
-                        return '<div class="btn-group pull-right"><button class="btn purple btn-xs dropdown-toggle" data-toggle="dropdown"><i class="icon-note"></i></button>'+
-                            '<ul class="dropdown-menu pull-right"><li><a href="javascript:;"><i class="fa fa-print"></i> Print </a></li>'+
-                            '<li><a href="javascript:;"><i class="fa fa-file-pdf-o"></i> Save as PDF </a></li>'+
-                            '<li><a href="javascript:;"><i class="fa fa-file-excel-o"></i> Export to Excel </a></li></ul></div>';
+                        return '<div class="btn-group pull-right"><button class="btn green btn-xs dropdown-toggle" data-toggle="dropdown"><i class="fa fa-sort-down"></i></button>'+
+                            '<ul class="dropdown-menu pull-right"><li><a href="javascript:;"><i class="fa fa-pencil"></i> Edit </a></li>'+
+                            '<li><a href="javascript:;"><i class="fa fa-eye"></i> View </a></li>'+
+                            '<li><a href="javascript:;"><i class="fa fa-trash-o"></i> Delete </a></li></ul></div>';
                     },
                     orderable: false,
                     targets: 4
@@ -233,12 +229,16 @@
                 { data: "contact1" },
                 { data: "address" },
                 { data: "created_date" },
-                {data:"id"},
+                { data:"id"},
             ],
             drawCallback: function ( settings ) {
             }
 
         });
-
+        
+        var message = '<?php echo $this->session->flashdata('message')?>';
+        if(message != '') {
+            toastr.success('Data pelanggan telah tersimpan', 'Berhasil', {timeOut: 5000});
+        }
     });
 </script>

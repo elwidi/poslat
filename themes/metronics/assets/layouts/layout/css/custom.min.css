@@ -1,0 +1,31 @@
+.parsley-errors-list {
+  margin-bottom: 0; }
+  .parsley-errors-list > li {
+    color: #ef645f;
+    margin-top: 4px;
+    font-size: 13px; 
+    display: block;
+    }
+
+input.parsley-error,
+select.parsley-error,
+textarea.parsley-error {
+  /*border-color: #e2445a;*/
+  color: #ef645f; }
+  input.parsley-error:focus,
+  select.parsley-error:focus,
+  textarea.parsley-error:focus {
+    /*border-color: #e2445a;*/
+    color: #ef645f; }
+  input.parsley-error::-moz-placeholder,
+  select.parsley-error::-moz-placeholder,
+  textarea.parsley-error::-moz-placeholder {
+    color: #f4918d; }
+  input.parsley-error:-ms-input-placeholder,
+  select.parsley-error:-ms-input-placeholder,
+  textarea.parsley-error:-ms-input-placeholder {
+    color: #f4918d; }
+  input.parsley-error::-webkit-input-placeholder,
+  select.parsley-error::-webkit-input-placeholder,
+  textarea.parsley-error::-webkit-input-placeholder {
+    color: #f4918d; }
