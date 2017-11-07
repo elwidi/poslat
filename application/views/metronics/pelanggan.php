@@ -44,10 +44,10 @@
                                         <i class="fa fa-angle-down"></i>
                                     </button>
                                     <ul class="dropdown-menu pull-right">
-                                        <li>
-                                            <a href="javascript:;">
-                                                <i class="fa fa-print"></i> Print </a>
-                                        </li>
+                                        <!--<li class = "action--view">
+                                            <a href="testremotemodal" data-target="#test" data-toggle="modal">
+                                            <i class="fa fa-file-pdf-o"></i> Test </a>
+                                        </li>!-->
                                         <li>
                                             <a href="javascript:;">
                                                 <i class="fa fa-file-pdf-o"></i> Save as PDF </a>
@@ -127,15 +127,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- <div class="form-actions">
-                                <div class="row">
-                                    <div class="col-md-offset-3 col-md-9">
-                                        <button type="submit" class="btn btn-circle green">Submit</button>
-                                        <button type="button" class="btn btn-circle grey-salsa btn-outline">Cancel</button>
-                                    </div>
-                                </div>
-                            </div> -->
-                        
                     </div>
                 </div> 
             </div>
@@ -151,6 +142,17 @@
     <!-- /.modal-dialog -->
 </div>
 
+<div class="modal fade" id="test" role="basic" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img src="<?php base_url();?>/themes/metronics/assets/global/img/loading-spinner-grey.gif" alt="" class="loading">
+                <span> &nbsp;&nbsp;Loading... </span>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     var table;
  
@@ -163,6 +165,7 @@
             orientation: "left",
             autoclose: true
         });
+
         $('#pelanggan_baru').parsley();
         //datatables
         $('#sample_1').dataTable({
@@ -205,7 +208,7 @@
                     render: function (data, type, row) {
                         return '<div class="btn-group pull-right"><button class="btn green btn-xs dropdown-toggle" data-toggle="dropdown"><i class="fa fa-sort-down"></i></button>'+
                             '<ul class="dropdown-menu pull-right"><li><a href="javascript:;"><i class="fa fa-pencil"></i> Edit </a></li>'+
-                            '<li><a href="javascript:;"><i class="fa fa-eye"></i> View </a></li>'+
+                            '<li><a href="testremotemodal/'+row.id+'" data-target="#test" data-toggle="modal"><i class="fa fa-eye"></i> View </a></li>'+
                             '<li><a href="javascript:;"><i class="fa fa-trash-o"></i> Delete </a></li></ul></div>';
                     },
                     orderable: false,

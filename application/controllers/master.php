@@ -36,6 +36,12 @@ class Master extends CI_Controller {
         $this->load->view('pelanggan');
     }
 
+    public function testremotemodal($id){
+    	$this->load->theme('metronics-modal');
+    	$data['costumer'] = $this->m_master->getCustDataById($id);
+        $this->load->view('modal_remote',$data);
+    }
+
     /*function insert_dumy(){
         // jumlah data yang akan di insert
         $jumlah_data = 100;
