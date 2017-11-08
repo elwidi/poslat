@@ -49,11 +49,11 @@
                                             <i class="fa fa-file-pdf-o"></i> Test </a>
                                         </li>!-->
                                         <li>
-                                            <a href="javascript:;">
+                                            <a href="javascript:;" class= "disabled">
                                                 <i class="fa fa-file-pdf-o"></i> Save as PDF </a>
                                         </li>
                                         <li>
-                                            <a href="javascript:;">
+                                            <a href="<?php echo base_url();?>master/pelanggan/pelangganExcel">
                                                 <i class="fa fa-file-excel-o"></i> Export to Excel </a>
                                         </li>
                                     </ul>
@@ -61,7 +61,7 @@
                             </div>
                         </div>
                     </div>
-                    <table class="table table-striped table-bordered table-hover" id="sample_1">
+                    <table class="table table-striped table-bordered table-hover" id="customer">
                         <thead>
                             <tr>
                                 <th> Nama </th>
@@ -142,7 +142,18 @@
     <!-- /.modal-dialog -->
 </div>
 
-<div class="modal fade" id="test" role="basic" aria-hidden="true">
+<div class="modal fade" id="view" role="basic" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img src="<?php base_url();?>/themes/metronics/assets/global/img/loading-spinner-grey.gif" alt="" class="loading">
+                <span> &nbsp;&nbsp;Loading... </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="edit" role="basic" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
@@ -154,12 +165,11 @@
 </div>
 
 <script>
-    var table;
- 
     $(document).ready(function() {
         $('#new_add').click(function(){
             $('#add_new').modal('show');
         });
+
         $('.date-picker').datepicker({
             rtl: App.isRTL(),
             orientation: "left",
@@ -167,8 +177,9 @@
         });
 
         $('#pelanggan_baru').parsley();
+
         //datatables
-        $('#sample_1').dataTable({
+        $('#customer').dataTable({
             processing: true,
             serverSide: true,
             ajax: {
@@ -207,8 +218,8 @@
                 {
                     render: function (data, type, row) {
                         return '<div class="btn-group pull-right"><button class="btn green btn-xs dropdown-toggle" data-toggle="dropdown"><i class="fa fa-sort-down"></i></button>'+
-                            '<ul class="dropdown-menu pull-right"><li><a href="javascript:;"><i class="fa fa-pencil"></i> Edit </a></li>'+
-                            '<li><a href="testremotemodal/'+row.id+'" data-target="#test" data-toggle="modal"><i class="fa fa-eye"></i> View </a></li>'+
+                            '<ul class="dropdown-menu pull-right"><li><a href="<?php echo base_url();?>master/edit_pelanggan/'+row.id+'"><i class="fa fa-pencil"></i> Edit </a></li>'+
+                            '<li><a href="<?php echo base_url();?>master/view_pelanggan/'+row.id+'" data-target="#view" data-toggle="modal"><i class="fa fa-eye"></i> View </a></li>'+
                             '<li><a href="javascript:;"><i class="fa fa-trash-o"></i> Delete </a></li></ul></div>';
                     },
                     orderable: false,
@@ -222,7 +233,7 @@
                 { data: "contact1" },
                 { data: "address" },
                 { data: "created_date" },
-                { data:"id"},
+                { data: "id"},
             ],
             drawCallback: function ( settings ) {
             }

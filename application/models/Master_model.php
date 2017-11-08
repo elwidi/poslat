@@ -8,6 +8,13 @@ class Master_model extends CI_Model {
         parent::__construct();
     }
 
+    public function getAllCust(){
+        $this->db->select('*');
+        $this->db->from('pelanggan');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     public function getCustDataById($id){
     	$this->db->select('*');
     	$this->db->from('pelanggan');
