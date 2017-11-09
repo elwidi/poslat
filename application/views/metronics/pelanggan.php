@@ -48,10 +48,10 @@
                                             <a href="testremotemodal" data-target="#test" data-toggle="modal">
                                             <i class="fa fa-file-pdf-o"></i> Test </a>
                                         </li>!-->
-                                        <li>
+                                        <!-- <li>
                                             <a href="javascript:;" class= "disabled">
                                                 <i class="fa fa-file-pdf-o"></i> Save as PDF </a>
-                                        </li>
+                                        </li> -->
                                         <li>
                                             <a href="<?php echo base_url();?>master/pelangganExcel" target = "_blank">
                                                 <i class="fa fa-file-excel-o"></i> Export to Excel </a>
@@ -91,7 +91,7 @@
                 <div class="portlet">
                     <div class="portlet-body form">
                         <!-- BEGIN FORM-->
-                        <form method="post" class="form-horizontal" id = "pelanggan_baru">
+                        <form method="post" class="form-horizontal validate" id = "pelanggan_baru">
                             <div class="form-body">
                                 <div class="form-group">
                                     <label class="col-md-4 control-label">Nama <span class="required"> * </span></label>
@@ -170,14 +170,6 @@
             $('#add_new').modal('show');
         });
 
-        $('.date-picker').datepicker({
-            rtl: App.isRTL(),
-            orientation: "left",
-            autoclose: true
-        });
-
-        $('#pelanggan_baru').parsley();
-
         //datatables
         $('#customer').dataTable({
             processing: true,
@@ -242,7 +234,7 @@
         
         var message = '<?php echo $this->session->flashdata('message')?>';
         if(message != '') {
-            toastr.success('Data pelanggan telah tersimpan', 'Berhasil', {timeOut: 5000});
+            toastr.success(message, 'Berhasil', {timeOut: 5000});
         }
     });
 </script>

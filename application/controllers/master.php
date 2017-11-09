@@ -43,7 +43,18 @@ class Master extends CI_Controller {
     }
 
     public function edit_pelanggan($id){
-        $this->load->view('edit_pelanggan');
+        $data['customer'] = $this->m_master->getCustDataById($id);
+
+        if ($this->input->post('submit_btn') == 'true'){
+            if($this->m_master->editCust($id)){
+                $this->session->set_flashdata('message', 'Data pelanggan berhasil diperbaharui');
+                redirect('master/pelanggan');
+            }
+            // var_dump($this->input->post(null, true));
+            // exit();
+        }
+
+        $this->load->view('edit_pelanggan', $data);
     }
 
     public function pelangganExcel(){
@@ -112,7 +123,7 @@ class Master extends CI_Controller {
         //===========================================================================================================
         //END PHP EXCEL
     }
-    
+
     function force_download($filename = '', $data = '') {
         if ($filename == '' OR $data == '') {
           return FALSE;

@@ -4,7 +4,7 @@
 
     <head>
         <meta charset="utf-8" />
-        <title>POS</title>
+        <title>Point Of Sales</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="Preview page of Metronic Admin Theme #1 for statistics, charts, recent events and reports" name="description" />
@@ -57,6 +57,7 @@
         <script src="<?php echo base_url();?>/themes/metronics/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url();?>/themes/metronics/assets/global/plugins/bootstrap-toastr/toastr.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url();?>/themes/metronics/assets/elwidi/parsley.min.js" type="text/javascript"></script>
+        <script src="<?php echo base_url();?>/themes/metronics/assets/elwidi/form_apps.js" type="text/javascript"></script>
 
         <!-- END CORE PLUGINS -->
         <link rel="shortcut icon" href="favicon.ico" /> </head>
