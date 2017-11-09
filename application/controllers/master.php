@@ -52,8 +52,8 @@ class Master extends CI_Controller {
 
         //membuat objek PHPExcel
         $objPHPExcel = new PHPExcel();
-
         $filename = 'data_pelanggan.xlsx';
+        $path = "assets/" . $filename;
 
         if (file_exists($path)) {
           @unlink($path);
@@ -101,13 +101,6 @@ class Master extends CI_Controller {
         }
 
         $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-        ob_end_clean();
-        header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
-        header("Cache-Control: no-store, no-cache, must-revalidate");
-        header("Cache-Control: post-check=0, pre-check=0", false);
-        header("Pragma: no-cache");
-        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment;filename="'.$filename.'"');
         $objWriter->save($path);
         $content = file_get_contents($path);
 
@@ -118,7 +111,49 @@ class Master extends CI_Controller {
         }
         //===========================================================================================================
         //END PHP EXCEL
+    }
+    
+    function force_download($filename = '', $data = '') {
+        if ($filename == '' OR $data == '') {
+          return FALSE;
         }
+
+        // Try to determine if the filename includes a file extension.
+        // We need it in order to set the MIME type
+        if (FALSE === strpos($filename, '.')) {
+          return FALSE;
+        }
+
+        // Grab the file extension
+        $x = explode('.', $filename);
+        $extension = end($x);
+
+        // Set a default mime if we can't find it
+        if (!isset($mimes[$extension])) {
+          $mime = 'application/octet-stream';
+        } else {
+          $mime = (is_array($mimes[$extension])) ? $mimes[$extension][0] : $mimes[$extension];
+        }
+
+        // Generate the server headers
+        if (strpos($_SERVER['HTTP_USER_AGENT'], "MSIE") !== FALSE) {
+          header('Content-Type: "' . $mime . '"');
+          header('Content-Disposition: attachment; filename="' . $filename . '"');
+          header('Expires: 0');
+          header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+          header("Content-Transfer-Encoding: binary");
+          header('Pragma: public');
+          header("Content-Length: " . strlen($data));
+        } else {
+          header('Content-Type: "' . $mime . '"');
+          header('Content-Disposition: attachment; filename="' . $filename . '"');
+          header("Content-Transfer-Encoding: binary");
+          header('Expires: 0');
+          header('Pragma: no-cache');
+          header("Content-Length: " . strlen($data));
+        }
+        ob_get_clean();
+        exit($data);
     }
 
     /*function insert_dumy(){

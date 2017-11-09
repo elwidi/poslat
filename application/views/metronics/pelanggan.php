@@ -53,7 +53,7 @@
                                                 <i class="fa fa-file-pdf-o"></i> Save as PDF </a>
                                         </li>
                                         <li>
-                                            <a href="<?php echo base_url();?>master/pelanggan/pelangganExcel">
+                                            <a href="<?php echo base_url();?>master/pelangganExcel" target = "_blank">
                                                 <i class="fa fa-file-excel-o"></i> Export to Excel </a>
                                         </li>
                                     </ul>
