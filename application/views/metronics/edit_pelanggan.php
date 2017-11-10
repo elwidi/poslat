@@ -18,7 +18,7 @@
         <div class="col-md-12">
             <div class="portlet">
                 <div class="portlet-body form">
-                    <form method="post" class="form-horizontal" id = "pelanggan_baru">
+                    <form method="post" class="form-horizontal validate" id = "pelanggan_baru">
                         <div class="form-body">
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Nama <span class="required"> * </span></label>

@@ -167,6 +167,29 @@ class Master extends CI_Controller {
         exit($data);
     }
 
+    public function kode_barang(){
+        if ($this->input->post('submit_btn') == 'true'){
+            if($this->m_master->saveNewCust()){
+                $this->session->set_flashdata('message', 'Data pelanggan baru telah disimpan');
+                redirect('master/pelanggan');
+            }
+            // var_dump($this->input->post(null, true));
+            // exit();
+        }
+        $this->load->view('barang');
+    }
+
+    public function kode_barang_dt(){
+        $this->load->library('Datatable', array('model' => 'Kode_Barang_dt', 'rowIdCol' => 'id'));
+
+        $jsonArray = $this->datatable->datatableJson(array(
+        ));
+
+        $this->output->set_header("Pragma: no-cache");
+        $this->output->set_header("Cache-Control: no-store, no-cache");
+        $this->output->set_content_type('application/json')->set_output(json_encode($jsonArray));
+    }
+
     /*function insert_dumy(){
         // jumlah data yang akan di insert
         $jumlah_data = 100;

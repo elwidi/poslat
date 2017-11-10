@@ -56,7 +56,7 @@
                         </a>
                         <ul class = "sub-menu">
                             <li class = "nav-item">
-                               <a href="ui_general.html" class="nav-link ">
+                               <a href="<?php echo base_url();?>master/kode_barang" class="nav-link ">
                                     <span class="title">Kode Barang</span>
                                 </a> 
                             </li>
