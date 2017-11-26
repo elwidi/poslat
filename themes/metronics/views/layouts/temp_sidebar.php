@@ -87,13 +87,13 @@
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item  ">
-                        <a href="components_color_pickers.html" class="nav-link ">
-                            <span class="title">Pembelian</span>
+                        <a href="<?php echo base_url();?>transaction/penjualan" class="nav-link ">
+                            <span class="title">Penjualan</span>
                         </a>
                     </li>
                     <li class="nav-item  ">
                         <a href="components_select2.html" class="nav-link ">
-                            <span class="title">Penjualan</span>
+                            <span class="title">Pembelian</span>
                         </a>
                     </li>
                 </ul>

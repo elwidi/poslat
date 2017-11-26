@@ -15,11 +15,26 @@ class Master_model extends CI_Model {
         return $query->result();
     }
 
+    public function getAllGoods(){
+        $this->db->select('*');
+        $this->db->from('barang');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     public function getCustDataById($id){
     	$this->db->select('*');
     	$this->db->from('pelanggan');
     	$this->db->where('id',$id);
     	$query = $this->db->get();
+        return $query->row();
+    }
+
+    public function getGoodsByName($name){
+        $this->db->select('*');
+        $this->db->from('barang');
+        $this->db->where('nama_barang',$name);
+        $query = $this->db->get();
         return $query->row();
     }
 

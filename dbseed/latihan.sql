@@ -10,10 +10,34 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-11-04 08:56:17
+Date: 2017-11-26 21:32:08
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for barang
+-- ----------------------------
+DROP TABLE IF EXISTS `barang`;
+CREATE TABLE `barang` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `kode_barang` varchar(100) DEFAULT NULL,
+  `nama_barang` varchar(400) DEFAULT NULL,
+  `harga` varchar(100) DEFAULT NULL,
+  `stock` int(11) DEFAULT NULL,
+  `created_date` date DEFAULT NULL,
+  `created_by` varchar(100) DEFAULT NULL,
+  `last_updated_date` date DEFAULT NULL,
+  `last_updated_by` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of barang
+-- ----------------------------
+INSERT INTO `barang` VALUES ('1', 'BA001', 'Sendok Plastik', '5600', '100', null, null, null, null);
+INSERT INTO `barang` VALUES ('2', 'BA002', 'Piring Kertas', '7500', '15', null, null, null, null);
+INSERT INTO `barang` VALUES ('3', 'BA003', 'Balon Karakter', '3975', '0', null, null, null, null);
 
 -- ----------------------------
 -- Table structure for pelanggan
@@ -31,7 +55,7 @@ CREATE TABLE `pelanggan` (
   `last_updated_date` date DEFAULT NULL,
   `last_updated_by` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of pelanggan
@@ -136,3 +160,21 @@ INSERT INTO `pelanggan` VALUES ('97', 'Pelanggan ke - 97', 'Jalan Tambak No. 97'
 INSERT INTO `pelanggan` VALUES ('98', 'Pelanggan ke - 98', 'Jalan Tambak No. 98', '08989809098', 'pelangganke98@mail.com', '1991-01-01', '2017-11-04', 'system', null, null);
 INSERT INTO `pelanggan` VALUES ('99', 'Pelanggan ke - 99', 'Jalan Tambak No. 99', '08989809099', 'pelangganke99@mail.com', '1991-01-01', '2017-11-04', 'system', null, null);
 INSERT INTO `pelanggan` VALUES ('100', 'Pelanggan ke - 100', 'Jalan Tambak No. 100', '089898090100', 'pelangganke100@mail.com', '1991-01-01', '2017-11-04', 'system', null, null);
+INSERT INTO `pelanggan` VALUES ('101', 'Hanan difa', 'Jalan Bungur', '215487', 'hanan@mail.com', '1997-11-20', '2017-11-07', null, null, null);
+INSERT INTO `pelanggan` VALUES ('103', 'Herawati', 'Jalan Melati', '0124578651', 'herawati@mail.co', '1990-03-16', '2017-11-07', null, null, null);
+INSERT INTO `pelanggan` VALUES ('104', 'Melawati', 'Jl. Angsana', '454545', 'mela@mail.com', '1981-07-28', '2017-11-07', null, null, null);
+
+-- ----------------------------
+-- Table structure for penjualan_tmp
+-- ----------------------------
+DROP TABLE IF EXISTS `penjualan_tmp`;
+CREATE TABLE `penjualan_tmp` (
+  `kode_barang` varchar(100) DEFAULT NULL,
+  `nama_barang` varchar(400) DEFAULT NULL,
+  `harga` varchar(100) DEFAULT NULL,
+  `jumlah` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of penjualan_tmp
+-- ----------------------------

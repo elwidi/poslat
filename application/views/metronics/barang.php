@@ -188,14 +188,14 @@
                 },
                 {
                     render: function (data, type, row) {
-                        return '<p>'+row.name+'</p>';
+                        return '<p>'+row.nama_barang+'</p>';
                     },
                     orderable: false,
                     targets: 1
                 },
                 {
                     render: function (data, type, row) {
-                        return '<p>'+row.price+'</p>';
+                        return '<p>'+row.harga+'</p>';
                     },
                     orderable: false,
                     targets: 2
@@ -222,8 +222,8 @@
             order: [0, "asc"],
             columns: [
                 { data: "kode_barang" },
-                { data: "name" },
-                { data: "price" },
+                { data: "nama_barang" },
+                { data: "harga" },
                 { data: "stock" },
                 { data: "id"},
             ],
