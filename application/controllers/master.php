@@ -168,15 +168,16 @@ class Master extends CI_Controller {
     }
 
     public function kode_barang(){
+        $data['jenis'] = $this->m_master->getGoodsGroup();
+
         if ($this->input->post('submit_btn') == 'true'){
-            if($this->m_master->saveNewCust()){
-                $this->session->set_flashdata('message', 'Data pelanggan baru telah disimpan');
-                redirect('master/pelanggan');
+            if($this->m_master->saveNewGoods()){
+                $this->session->set_flashdata('message', 'Data barang telah disimpan');
+                redirect('master/kode_barang');
             }
-            // var_dump($this->input->post(null, true));
-            // exit();
         }
-        $this->load->view('barang');
+
+        $this->load->view('barang', $data);
     }
 
     public function kode_barang_dt(){

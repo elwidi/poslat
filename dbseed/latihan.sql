@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-11-26 21:32:08
+Date: 2018-01-07 21:18:28
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -24,20 +24,39 @@ CREATE TABLE `barang` (
   `kode_barang` varchar(100) DEFAULT NULL,
   `nama_barang` varchar(400) DEFAULT NULL,
   `harga` varchar(100) DEFAULT NULL,
-  `stock` int(11) DEFAULT NULL,
-  `created_date` date DEFAULT NULL,
+  `created_date` datetime DEFAULT NULL,
   `created_by` varchar(100) DEFAULT NULL,
   `last_updated_date` date DEFAULT NULL,
   `last_updated_by` varchar(100) DEFAULT NULL,
+  `delete_flag` varchar(255) DEFAULT NULL,
+  `jenis_barang` varchar(3) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of barang
 -- ----------------------------
-INSERT INTO `barang` VALUES ('1', 'BA001', 'Sendok Plastik', '5600', '100', null, null, null, null);
-INSERT INTO `barang` VALUES ('2', 'BA002', 'Piring Kertas', '7500', '15', null, null, null, null);
-INSERT INTO `barang` VALUES ('3', 'BA003', 'Balon Karakter', '3975', '0', null, null, null, null);
+INSERT INTO `barang` VALUES ('4', 'SPM001', 'Supermi Mie Goreng Isi 2', '2500', '2018-01-07 14:08:36', 'admin', null, null, null, null);
+INSERT INTO `barang` VALUES ('9', 'MKNSAO0', 'Saos ABC 75ml', '4750', '2018-01-07 14:57:36', 'admin', null, null, '0', null);
+INSERT INTO `barang` VALUES ('10', 'TOISAB0', 'Sabun Nuvo 65g', '1275', '2018-01-07 14:57:57', 'admin', null, null, '0', null);
+
+-- ----------------------------
+-- Table structure for jenis_barang
+-- ----------------------------
+DROP TABLE IF EXISTS `jenis_barang`;
+CREATE TABLE `jenis_barang` (
+  `id` int(11) DEFAULT NULL,
+  `jenis_barang` varchar(200) DEFAULT NULL,
+  `kode_jenis` varchar(50) DEFAULT NULL,
+  `counter` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of jenis_barang
+-- ----------------------------
+INSERT INTO `jenis_barang` VALUES ('1', 'Makanan', 'MKN', '1');
+INSERT INTO `jenis_barang` VALUES ('2', 'Toiletteries', 'TOI', '1');
+INSERT INTO `jenis_barang` VALUES ('3', 'Lain-lain', 'OTH', '0');
 
 -- ----------------------------
 -- Table structure for pelanggan
@@ -55,7 +74,7 @@ CREATE TABLE `pelanggan` (
   `last_updated_date` date DEFAULT NULL,
   `last_updated_by` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of pelanggan

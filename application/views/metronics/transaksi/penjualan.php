@@ -46,7 +46,7 @@
                                         <div class="form-group">
                                             <label class="col-md-4 control-label">Jumlah</label>
                                             <div class="col-md-8">
-                                                <input type="number" min = "1" name = "contact2" class="form-control" data-parsley-required = "true" data-parsley-error-message="Silahkan masukkan jumlah barang">
+                                                <input type="number" min = "1" name = "qty" class="form-control" data-parsley-required = "true" data-parsley-error-message="Silahkan masukkan jumlah barang">
                                             </div>
                                         </div>
                                         <div class="btn-group">
@@ -58,26 +58,18 @@
                             </div>
                         </div>
                     </div>
-                    <table class="table table-striped table-bordered table-hover" id="sells">
+                    <table class="table table-striped table-bordered table-hover" id="shopping_chart">
                         <thead>
                             <tr>
                                 <th> Kode </th>
                                 <th> Nama </th>
-                                <th> Qty </th>
                                 <th> Harga </th>
                                 <th> Jumlah </th>
+                                <th> Total </th>
                                 <th><span class = "glyphicon glyphicon-chevron-down"></i></th>
                             </tr>
                         </thead>
                        <tbody>
-                           <tr>
-                               <td>BA002</td>
-                               <td>Sendok Plastik</td>
-                               <td>100</td>
-                               <td>1000</td>
-                               <td>16</td>
-                               <td><i class="fa fa-trash-o"></td>
-                           </tr>
                        </tbody>
                     </table>
                 </div>
@@ -96,7 +88,6 @@
                 data : {nama_barang : nama},
                 dataType:'json',
                 success : function(res) {
-                    // console.log(data.status);
                     if(res.status == 'success'){
                         $('#kode_barang').val(res.data.kode_barang);
                         $('#harga').val(res.data.harga);
@@ -104,5 +95,45 @@
                 }
             });
         });
+
+        function deleteRow(buttonElement){
+            $(buttonElement).parent().parent().parent().remove();
+        }
+        
+        $(document).on("click", ".fa-trash-o", function(){  
+            deleteRow(this);
+        });
+    
+
+        var numGoods=$('#shopping_chart tbody').children().length;
+
+        $("#new_add").click(function(){
+            addnewBarang();
+            return false;
+        });
+
+        function addnewBarang(){
+            numGoods++;
+            var kode_barang = $('#kode_barang').val();
+            var nama_barang = $("[name='nama_barang']").val();
+            var qty = $("[name='qty']").val();
+            var harga = $('#harga').val();
+            // console.log(kode_barang);
+            // console.log(qty);
+            var row='<tr>';
+                row+='<td>'+kode_barang+'</td>';
+                row+='<td>'+nama_barang+'</td>';
+                row+='<td>'+harga+'</td>';
+                row+= '<td>'+qty+'</td>'
+                row+='<td>'+harga*qty+'</td>';
+                row+= '<td><a><i class="fa fa-trash-o"></a></td>';
+            if(kode_barang!='' && qty != ''){
+                $("#shopping_chart tbody").append(row);   
+            } else {
+                return false;
+            }
+        }
     });
+
+
 </script>

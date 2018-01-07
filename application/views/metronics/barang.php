@@ -67,7 +67,6 @@
                                 <th> Kode Barang </th>
                                 <th> Nama Barang </th>
                                 <th> Harga </th>
-                                <th> Stock </th>
                                 <th><i class = "icon-list "></i></th>
                             </tr>
                         </thead>
@@ -85,7 +84,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                <h4 class="modal-title">Data Pelanggan Baru</h4>
+                <h4 class="modal-title">Data  Barang Baru</h4>
             </div>
             <div class="modal-body"> 
                 <div class="portlet">
@@ -94,36 +93,32 @@
                         <form method="post" class="form-horizontal validate" id = "pelanggan_baru">
                             <div class="form-body">
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label">Nama <span class="required"> * </span></label>
+                                    <label class="col-md-4 control-label">Jenis Barang <span class="required"> * </span></label>
                                     <div class="col-md-8">
-                                        <input type="text" name = "name" class="form-control" data-parsley-required = "true" data-parsley-error-message="Silahkan masukan nama">
+                                        <select id="goods" name = "jenis_barang" class="form-control select2" data-parsley-required = "true" data-parsley-error-message="Silahkan masukkan Jenis Barang">
+                                                    <option></option>
+                                                    <?php foreach($jenis as $key => $value){?>
+                                                    <option value="<?php echo $value->kode_jenis?>"><?php echo $value->jenis_barang?></option>
+                                                    <?php }?>
+                                                </select>
+                                    </div>
+                                </div>
+                                <!-- <div class="form-group">
+                                    <label class="col-md-4 control-label">Kode Barang <span class="required"> * </span></label>
+                                    <div class="col-md-8">
+                                        <input type="text" name = "kode_barang" class="form-control" data-parsley-required = "true" data-parsley-error-message="Silahkan masukan kode barang">
+                                    </div>
+                                </div> -->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Nama Barang<span class="required"> * </span></label>
+                                    <div class="col-md-8">
+                                        <input type="text" name = "nama_barang" class="form-control" data-parsley-required = "true" data-parsley-error-message="Silahkan masukan nomor hp">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label">Nomor Handphone<span class="required"> * </span></label>
+                                    <label class="col-md-4 control-label">Harga Satuan</label>
                                     <div class="col-md-8">
-                                        <input type="text" name = "contact1" class="form-control" data-parsley-required = "true" data-parsley-error-message="Silahkan masukan nomor hp">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label">Email</label>
-                                    <div class="col-md-8">
-                                        <input type="email" name = "contact2" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label">Alamat</label>
-                                    <div class="col-md-8">
-                                        <textarea rows="3" cols="5" name="address" class="form-control" placeholder="Enter your address here"></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label">Tanggal Lahir</label>
-                                    <div class="col-md-8">
-                                        <div class="input-icon">
-                                            <i class="fa fa-calendar"></i>
-                                            <input name = "dob" class="form-control form-control-inline input-medium date-picker" data-date-format="dd M yyyy" size="16" type="text" value="" />
-                                        </div>
+                                        <input type="text" name = "harga_satuan" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -202,20 +197,13 @@
                 },
                 {
                     render: function (data, type, row) {
-                        return '<p>'+row.stock+'</p>';
-                    },
-                    orderable: false,
-                    targets: 3
-                },
-                {
-                    render: function (data, type, row) {
                         return '<div class="btn-group pull-right"><button class="btn green btn-xs dropdown-toggle" data-toggle="dropdown"><i class="fa fa-sort-down"></i></button>'+
                             '<ul class="dropdown-menu pull-right"><li><a href="<?php echo base_url();?>master/edit_pelanggan/'+row.id+'"><i class="fa fa-pencil"></i> Edit </a></li>'+
                             '<li><a href="<?php echo base_url();?>master/view_pelanggan/'+row.id+'" data-target="#view" data-toggle="modal"><i class="fa fa-eye"></i> View </a></li>'+
                             '<li><a href="javascript:;"><i class="fa fa-trash-o"></i> Delete </a></li></ul></div>';
                     },
                     orderable: false,
-                    targets: 4
+                    targets: 3
                 },
 
             ],
@@ -224,7 +212,6 @@
                 { data: "kode_barang" },
                 { data: "nama_barang" },
                 { data: "harga" },
-                { data: "stock" },
                 { data: "id"},
             ],
             drawCallback: function ( settings ) {
